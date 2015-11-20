@@ -1,0 +1,41 @@
+<div class="row">
+  <div class="col s12">
+  <p>Do you want to use a quick list?
+    {{md-switch checked=switchValue}}</p>
+  </div>
+</div>
+
+{{#if switchValue}}
+
+<div class="row">
+  {{md-select content=frameworks
+    value=framework
+    label="Activity"
+    prompt="Please choose..."
+    optionLabelPath="content.value"
+    optionValuePath="content" class="col s12"}}
+</div>
+
+{{else}}
+
+<div class="row">
+  {{md-textarea label='Activity'
+    value='Type a small description of your activity here' class="col s12"}}
+</div>
+
+{{/if}}
+
+<div style='margin:0;padding:0;width:100%;display:inline-block;'>
+<table style='margin:auto;color:grey;width:85%;'><tr><td>02 hours and 12 minutes</td><td>
+
+{{#md-btn action='debug'
+	buttonType='flat'
+	class=buttonColor
+	wavesClass='waves-dark'}}
+	Start Activity
+{{/md-btn}}
+
+</td></tr></table>
+</div>
+
+{{outlet}}

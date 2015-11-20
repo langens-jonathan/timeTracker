@@ -1,0 +1,5 @@
+`import Ember from 'ember'`
+
+SettingsController = Ember.Controller.extend()
+
+`export default SettingsController`

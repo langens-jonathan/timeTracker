@@ -1,3 +1,20 @@
-<h2 id="title">Welcome to Ember</h2>
+{{#md-navbar name='Time-Tracker' class=activeColor}}
+  {{#link-to 'index' tagName='li'}}
+    {{link-to 'home' 'index'}}
+  {{/link-to}}
+  {{#link-to 'index' tagName='li'}}
+    {{link-to 'activities' 'index'}}
+  {{/link-to}}
+  {{#link-to 'settings' tagName='li'}}
+    {{link-to 'settings' 'settings'}}
+  {{/link-to}}
+  {{#link-to 'index' tagName='li'}}
+    {{link-to 'history' 'index'}}
+  {{/link-to}}
+{{/md-navbar}}
+
 
 {{outlet}}
+
+{{!-- ember-cli-materialize modal container --}}
+{{md-modal-container}}
