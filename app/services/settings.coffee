@@ -24,15 +24,26 @@ SettingsService = Ember.Service.extend
 		'grey',
 		'blue-grey']
 
-  loadActiveColor:( ->
-    sr = @store.findRecord('settings')
-    @set 'activeColor', sr.activeColor
-  )
+  getSettingsRecord: ->
+    allSettings = @store.peekAll('settings')
+    settingsRecord = undefined
+    allSettings.forEach (item, i) ->
+      settingsRecord = settingsRecord or item
 
-  activeColorTracker: Ember.computed 'activeColor', ->
-    settingsPost = @store.createRecord 'settings',
-      'activeColor': @activeColor
-    settingsPost.save()
+    unless settingsRecord
+      settingsRecord = @store.createRecord('settings', {
+        'activeColor': @activeColor
+      })
+
+    settingsRecord
+
+  loadActiveColor: ->
+    sr = @getSettingsRecord()
+    @set 'activeColor', sr.get('activeColor')
+
+  saveSettings: ->
+    sr = @getSettingsRecord()
+    sr.set 'activeColor', @activeColor
 
 
 `export default SettingsService`

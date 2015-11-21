@@ -1,7 +1,12 @@
 `import Ember from 'ember'`
 
 IndexController = Ember.Controller.extend
+
   init: ->
+    @_super(arguments...)
+    @setActivityDescriptions()
+
+  setActivityDescriptions: ->
     # setting the activity descriptions
     ad = @store.peekAll('activity-description')
     ads = []
@@ -25,6 +30,12 @@ IndexController = Ember.Controller.extend
   endTime: Ember.computed.oneWay('activityTrackerService.endTime')
 
   trackingActivity: Ember.computed.oneWay('activityTrackerService.running')
+
+  currentTime: Ember.computed 'activityTrackerService.startTime', 'activityTrackerService.endTime', 'activityTrackerService.running', ->
+    if @get('activityTrackerService.running')
+      "{0} hours and {0} minutes"
+    else
+      ""
 
 
 `export default IndexController`

@@ -2,6 +2,21 @@
 
 ActivitiesController = Ember.Controller.extend
 
+  init: ->
+    @store.createRecord('activity-description', {
+      description: 'Rijden Leuven-Genk'
+    })
+    @store.createRecord('activity-description', {
+      description: 'Rijden Leuven-Tongeren'
+    })
+    @store.createRecord('activity-description', {
+      description: 'Rijden Genk-Tongeren'
+    })
+    @store.createRecord('activity-description', {
+      description: 'Leegmaken automaten'
+    })
+
+
   settingsService: Ember.inject.service('settings')
 
   buttonClass: Ember.computed 'settingsService.activeColor', ->
