@@ -1,0 +1,16 @@
+<div style="width:85%; margin:auto;padding-top:10px;">
+{{md-input value=activityDescription label='Activity description' class="col s12" validate=true}}
+{{#md-btn action='create'
+	buttonType='flat'
+	class=buttonClass}}
+	Create
+{{/md-btn}}
+<div style="width:10px;height:10px;display:inline;"></div>
+{{#md-btn action='cancel'
+	buttonType='flat'
+	class=buttonClass}}
+	Cancel
+{{/md-btn}}
+</div>
+
+{{outlet}}

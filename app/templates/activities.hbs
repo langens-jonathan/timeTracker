@@ -1,1 +1,39 @@
+
+<div style="width:85%;margin:auto;">
+<h5>Activities</h5>
+
+{{#md-table content=content as |row|}}
+  {{#md-table-col row=row key='description' valueBindingPath='description'}}
+  {{/md-table-col}}
+  {{#md-table-col row=row}}
+    {{#if row.selected}}
+     {{md-btn text='yes'
+	action='deleteRow'
+	buttonType='floating'
+	actionArg=row.description
+	class=buttonClass}}
+     {{md-btn text='no'
+	buttonType='floating'
+	action='selectRow'
+	class=buttonClass}}
+    {{else}}
+      {{md-btn icon='mdi-action-delete'
+	buttonType='floating'
+	action='selectRow'
+	actionArg=row.description
+	class=buttonClass}}
+    {{/if}}
+  {{/md-table-col}}
+{{/md-table}}
+
+    <div>
+    <div style="height:25px;width:50%;display:block;float:left;"></div>
+    <div style="margin:auto;">
+      {{md-btn icon='mdi-content-add'
+	buttonType='floating'
+	action='addRow'
+	class=buttonClass}}
+    </div>
+    </div>
+</div>
 {{outlet}}

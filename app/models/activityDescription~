@@ -1,0 +1,38 @@
+`import DS from 'ember-data'`
+
+ActivityDescription = DS.Model.extend {
+  description: DS.attr('string')
+  selected: DS.attr('boolean')
+}
+
+ActivityDescription.FIXTURE = [
+  {
+    description: 'activity 1',
+    selected: false
+  },
+  {
+    description: 'activity 2',
+    selected: false
+  },
+  {
+    description: 'activity 3',
+    selected: false
+  },
+  {
+    description: 'activity 4',
+    selected: false
+  },
+  {
+    description: 'activity 5',
+    selected: false
+  },
+  {
+    description: 'activity 6',
+    selected: false
+  },
+  {
+    description: 'activity 7',
+    selected: false
+  }]
+
+`export default ActivityDescription`
