@@ -31,11 +31,65 @@ IndexController = Ember.Controller.extend
 
   trackingActivity: Ember.computed.oneWay('activityTrackerService.running')
 
+  extractHours: (time) ->
+    time = time / (60 * 1000) # get the time in minutes
+    time % 60
+
+  extractMinutes: (time) ->
+    time = time / 1000 # get the time in seconds
+    time % 60
+
   currentTime: Ember.computed 'activityTrackerService.startTime', 'activityTrackerService.endTime', 'activityTrackerService.running', ->
+    @calculateCurrentTime()
+
+  calculateCurrentTime: ->
     if @get('activityTrackerService.running')
-      "{0} hours and {0} minutes"
+      timeChanged = (new Date()) - @get('activityTrackerService.startTime')
+      timeChangedInHours = timeChanged - (timeChanged % 3600000)
+      hours = timeChangedInHours / 3600000
+      timeChanged = timeChanged - (hours * 3600000)
+      timeChangedInMinutes = timeChanged - (timeChanged % 60000)
+      minutes = timeChangedInMinutes/60000
+      timeChanged = timeChanged - (minutes * 60000)
+      timeChanged = timeChanged - (timeChanged % 1000)
+      seconds = timeChanged / 1000
+      hours + " hours and " + minutes + "  minutes " + seconds + " seconds"
     else
       ""
 
+  calculateCurrentTimeRunLoop: ->
+    runLoop = =>
+      if(@get('activityTrackerService.running'))
+        @set 'currentTime', @calculateCurrentTime()
+        Ember.run.later(runLoop, 1000)
+    Ember.run.later(runLoop, 1000)
 
+  canStartActivity: ->
+    true
+
+  actions:
+    startActivity: ->
+      if @canStartActivity()
+        @set 'activityTrackerService.startTime', new Date()
+        @set 'activityTrackerService.running', true
+        @calculateCurrentTimeRunLoop()       
+
+    stopActivity: ->
+      if @get 'activityTrackerService.running'
+        @set 'activityTrackerService.endTime', new Date()
+        ats = @get 'activityTrackerService'
+        @store.createRecord('activity', {
+          description: @get 'activityTrackerService.description'
+          startTime: @get 'activityTrackerService.startTime'
+          endTime: @get 'activityTrackerService.endTime'
+          user: @get 'settingsService.username'
+        })
+        ats.reset()
+        @set 'currentTime', ""
+
+    cancelActivity: ->
+      ats = @get 'activityTrackerService'
+      ats.reset()
+      @set 'currentTime', ""
+    
 `export default IndexController`

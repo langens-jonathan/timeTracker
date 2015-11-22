@@ -16,12 +16,5 @@ ActivityTrackerService = Ember.Service.extend
     @set 'startTime', undefined
     @set 'endTime', undefined
 
-  save: ->
-    @store.createRecord('activity-description', {
-      description: @get 'description',
-      startTime: @get 'startTime',
-      endtime:@get 'endtime'
-    })
-    @reset()
 
 `export default ActivityTrackerService`

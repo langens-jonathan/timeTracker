@@ -1,1 +1,35 @@
+<div style="width:85%;margin:auto;">
+<h5>History</h5>
+
+{{#md-table content=content as |row|}}
+
+  {{#md-table-col row=row key='description' valueBindingPath='description'}}
+    {{row.description}}
+  {{/md-table-col}}
+  
+  {{#md-table-col row=row key='startTime' valueBindingPath='startTime'}}
+  {{/md-table-col}}
+  
+  {{#md-table-col row=row key='timeSpent' valueBindingPath='timeSpent'}}
+  {{/md-table-col}}
+  
+  {{#md-table-col row=row valueBindingPath='deleteButton'}}
+      {{md-btn icon='mdi-content-remove'
+	buttonType='floating'
+	action='deleteRow'
+	class=buttonClass}}
+  {{/md-table-col}}
+{{/md-table}}
+
+    <div>
+    <div style="height:25px;width:50%;display:block;float:left;"></div>
+    <div style="margin:auto;">
+      {{md-btn icon='mdi-content-add'
+	buttonType='floating'
+	action='addRow'
+	class=buttonClass}}
+    </div>
+    </div>
+</div>
+
 {{outlet}}

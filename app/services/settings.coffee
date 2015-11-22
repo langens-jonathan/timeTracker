@@ -4,6 +4,8 @@ SettingsService = Ember.Service.extend
   init: ->
     @_super(arguments...)
 
+  username: 'user'
+
   activeColor: 'deep-purple'
 
   colorOptions: ['pink',
@@ -28,11 +30,13 @@ SettingsService = Ember.Service.extend
     allSettings = @store.peekAll('settings')
     settingsRecord = undefined
     allSettings.forEach (item, i) ->
-      settingsRecord = settingsRecord or item
+      if item.username == @get('username')
+        settingsRecord = settingsRecord or item
 
     unless settingsRecord
       settingsRecord = @store.createRecord('settings', {
-        'activeColor': @activeColor
+        'activeColor': @get('activeColor')
+        'username': @get('username')
       })
 
     settingsRecord
@@ -43,7 +47,8 @@ SettingsService = Ember.Service.extend
 
   saveSettings: ->
     sr = @getSettingsRecord()
-    sr.set 'activeColor', @activeColor
+    sr.set 'activeColor', @get('activeColor')
+    sr.set 'username', @get('username')
 
 
 `export default SettingsService`
