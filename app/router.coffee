@@ -10,5 +10,6 @@ Router.map ->
   @route 'settings'
   @route 'history'
   @route 'activities/new'
+  @route 'history/new'
 
 `export default Router`

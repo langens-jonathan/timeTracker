@@ -53,7 +53,7 @@ IndexController = Ember.Controller.extend
       timeChanged = timeChanged - (minutes * 60000)
       timeChanged = timeChanged - (timeChanged % 1000)
       seconds = timeChanged / 1000
-      hours + " hours and " + minutes + "  minutes " + seconds + " seconds"
+      hours + " hours " + minutes + "  minutes " + seconds + " seconds"
     else
       ""
 

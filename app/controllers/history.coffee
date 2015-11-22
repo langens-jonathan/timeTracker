@@ -9,4 +9,8 @@ HistoryController = Ember.Controller.extend
   buttonClass: Ember.computed 'settingsService.activeColor', ->
     @get('settingsService.activeColor') + ' darken-1 white-text'
 
+  actions:
+    addRow: ->
+      @transitionTo('history/new')
+
 `export default HistoryController`

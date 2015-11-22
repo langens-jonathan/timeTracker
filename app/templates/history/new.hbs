@@ -1,0 +1,25 @@
+
+<div style="width:85%;margin:auto;">
+<h5>Create a new activity</h5>
+
+{{md-input value=activityDescription label='Activity description' class="col s12" validate=true}}
+
+<div class="row">
+  {{md-input-date label='Date' value=dateValue class="col s12"}}
+</div>
+<p>{{startTimeString}}</p>
+{{md-range value=startTime max=96 step=1 name="Start Time"}}
+<p>{{endTimeString}}</p>
+{{md-range value=endTime max=96 step=1 name="End Time"}}
+
+
+    <div>
+    <div style="height:25px;width:50%;display:block;float:left;"></div>
+{{md-btn action='createActivity'
+	text='Create' 
+	buttonType='flat'
+	class=buttonClass}}
+	</div>
+
+</div>
+{{outlet}}
