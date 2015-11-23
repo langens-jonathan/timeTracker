@@ -85,7 +85,7 @@ IndexController = Ember.Controller.extend
           startTime: @get 'activityTrackerService.startTime'
           endTime: @get 'activityTrackerService.endTime'
           extraInformation: @get 'activityTrackerService.extraInformation'
-          user: @get 'settingsService.username'
+          username: @get 'settingsService.username'
         })
         ats.reset()
         @set 'currentTime', ""

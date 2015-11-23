@@ -4,7 +4,6 @@
 {{#md-table content=content as |row|}}
 
   {{#md-table-col row=row key='description' valueBindingPath='description'}}
-    {{row.description}}
   {{/md-table-col}}
   
   {{#md-table-col row=row key='startTime' valueBindingPath='startTime'}}
@@ -16,6 +15,14 @@
   {{#md-table-col row=row key='extraInformation' valueBindingPath='extraInformation'}}
   {{/md-table-col}}
   
+  {{#md-table-col row=row valueBindingPath='editButton'}}
+      {{md-btn icon='mdi-content-edit'
+	buttonType='floating'
+	action='editRow'
+        actionArg=row
+	class=buttonClass}}
+  {{/md-table-col}}
+  
   {{#md-table-col row=row valueBindingPath='deleteButton'}}
       {{md-btn icon='mdi-content-remove'
 	buttonType='floating'
@@ -23,6 +30,7 @@
         actionArg=row
 	class=buttonClass}}
   {{/md-table-col}}
+  
 {{/md-table}}
 
     <div>

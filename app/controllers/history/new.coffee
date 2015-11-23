@@ -87,7 +87,7 @@ HistoryNewController = Ember.Controller.extend
         description: @get 'activityDescription'
         startTime: @calculateStartTime()
         endTime: @calculateEndTime()
-        user: @get 'settingsService.username'
+        username: @get 'settingsService.username'
         extraInformation: @get 'extraInformation'
       })
       @transitionTo('history')
