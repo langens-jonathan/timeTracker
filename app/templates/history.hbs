@@ -12,11 +12,15 @@
   
   {{#md-table-col row=row key='timeSpent' valueBindingPath='timeSpent'}}
   {{/md-table-col}}
+
+  {{#md-table-col row=row key='extraInformation' valueBindingPath='extraInformation'}}
+  {{/md-table-col}}
   
   {{#md-table-col row=row valueBindingPath='deleteButton'}}
       {{md-btn icon='mdi-content-remove'
 	buttonType='floating'
 	action='deleteRow'
+        actionArg=row
 	class=buttonClass}}
   {{/md-table-col}}
 {{/md-table}}

@@ -17,6 +17,6 @@ ActivityTrackerService = Ember.Service.extend
     @set 'description', ""
     @set 'startTime', undefined
     @set 'endTime', undefined
-
+    @set 'extraInformation', ""
 
 `export default ActivityTrackerService`

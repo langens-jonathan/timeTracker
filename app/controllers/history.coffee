@@ -13,4 +13,10 @@ HistoryController = Ember.Controller.extend
     addRow: ->
       @transitionTo('history/new')
 
+    deleteRow: (row) ->
+      ads = @store.peekAll('activity')
+      ads.forEach (item, i) ->
+        if item.get('description') == row.get('description') and item.get('startTime') == row.get('startTime') and item.get('endTime') == row.get('endTime') and item.get('extraInformation') == row.get('extraInformation')
+          item.destroyRecord()
+
 `export default HistoryController`
