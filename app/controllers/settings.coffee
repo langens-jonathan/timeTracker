@@ -8,5 +8,7 @@ SettingsController = Ember.Controller.extend
 
   colorOptions: Ember.computed.oneWay('settingsService.colorOptions')
 
+  username: Ember.computed.alias('settingsService.username')
+
 
 `export default SettingsController`
