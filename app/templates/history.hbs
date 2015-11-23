@@ -15,15 +15,15 @@
   {{#md-table-col row=row key='extraInformation' valueBindingPath='extraInformation'}}
   {{/md-table-col}}
   
-  {{#md-table-col row=row valueBindingPath='editButton'}}
-      {{md-btn icon='mdi-content-edit'
+  {{#md-table-col row=row valueBindingPath=''}}
+      {{md-btn icon='mdi-edit'
 	buttonType='floating'
 	action='editRow'
         actionArg=row
 	class=buttonClass}}
   {{/md-table-col}}
   
-  {{#md-table-col row=row valueBindingPath='deleteButton'}}
+  {{#md-table-col row=row valueBindingPath=''}}
       {{md-btn icon='mdi-content-remove'
 	buttonType='floating'
 	action='deleteRow'
