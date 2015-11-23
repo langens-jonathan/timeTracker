@@ -5,7 +5,8 @@ Activity = DS.Model.extend {
   startTime: DS.attr('date'),
   endTime: DS.attr('date'),
   extraInfo: DS.attr('string'),
-  username: DS.attr('string')
+  username: DS.attr('string'),
+  rev: DS.attr('string')
 }
 
 `export default Activity`
