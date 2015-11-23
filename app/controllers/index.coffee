@@ -67,6 +67,8 @@ IndexController = Ember.Controller.extend
   canStartActivity: ->
     true
 
+  extraInformation: Ember.computed.alias 'activityTrackerService.extraInformation'
+
   actions:
     startActivity: ->
       if @canStartActivity()
@@ -82,6 +84,7 @@ IndexController = Ember.Controller.extend
           description: @get 'activityTrackerService.description'
           startTime: @get 'activityTrackerService.startTime'
           endTime: @get 'activityTrackerService.endTime'
+          extraInformation: @get 'activityTrackerService.extraInformation'
           user: @get 'settingsService.username'
         })
         ats.reset()

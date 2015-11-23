@@ -79,6 +79,8 @@ HistoryNewController = Ember.Controller.extend
       @set('endTime', @get('startTime'))
   ).observes('endTime')
 
+  extraInformation: ""
+
   actions:
     createActivity: ->
       @store.createRecord('activity', {
@@ -86,6 +88,7 @@ HistoryNewController = Ember.Controller.extend
         startTime: @calculateStartTime()
         endTime: @calculateEndTime()
         user: @get 'settingsService.username'
+        extraInformation: @get 'extraInformation'
       })
       @transitionTo('history')
 

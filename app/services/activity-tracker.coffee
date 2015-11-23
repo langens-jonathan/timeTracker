@@ -10,6 +10,8 @@ ActivityTrackerService = Ember.Service.extend
 
   endTime: undefined
 
+  extraInformation: ""
+
   reset: ->
     @set 'running', false
     @set 'description', ""
