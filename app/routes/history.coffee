@@ -16,7 +16,7 @@ HistoryRoute = Ember.Route.extend
       seconds = timeChanged / 1000
       hours + " hours " + minutes + "  minutes " + seconds + " seconds"
     
-    m = @store.peekAll('activity')
+    m = @store.findAll('activity')
     m.forEach (item, i) ->
       item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
       item.set 'description', item.get('description')
@@ -25,7 +25,7 @@ HistoryRoute = Ember.Route.extend
   content: Ember.computed.alias 'model'
 
   udpateModel: ->
-    @set 'model', @store.peekAll('activity')
+    @set 'model', @store.findAll('activity')
 
   
 `export default HistoryRoute`

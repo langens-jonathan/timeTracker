@@ -80,13 +80,14 @@ IndexController = Ember.Controller.extend
       if @get 'activityTrackerService.running'
         @set 'activityTrackerService.endTime', new Date()
         ats = @get 'activityTrackerService'
-        @store.createRecord('activity', {
+        record = @store.createRecord('activity', {
           description: @get 'activityTrackerService.description'
           startTime: @get 'activityTrackerService.startTime'
           endTime: @get 'activityTrackerService.endTime'
           extraInfo: @get 'activityTrackerService.extraInformation'
           username: @get 'settingsService.username'
         })
+        record.save()
         ats.reset()
         @set 'currentTime', ""
 
