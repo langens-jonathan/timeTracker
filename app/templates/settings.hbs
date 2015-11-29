@@ -9,5 +9,12 @@
   {{md-textarea label='Username'
     value=username class="col s12"}}
 </div>
-
+{{#md-btn action='saveSettings'
+	buttonType='flat'
+	class=buttonClass
+	wavesClass='waves-dark'}}
+	Save settings
+{{/md-btn}}
 {{outlet}}
+
+

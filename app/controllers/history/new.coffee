@@ -83,13 +83,14 @@ HistoryNewController = Ember.Controller.extend
 
   actions:
     createActivity: ->
-      @store.createRecord('activity', {
+      record = @store.createRecord('activity', {
         description: @get 'activityDescription'
         startTime: @calculateStartTime()
         endTime: @calculateEndTime()
         username: @get 'settingsService.username'
         extraInfo: @get 'extraInformation'
       })
+      record.save()
       @transitionTo('history')
 
 `export default HistoryNewController`

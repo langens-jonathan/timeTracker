@@ -2,8 +2,8 @@
 
 Settings = DS.Model.extend {
   activeColor: DS.attr('string'),
-  username: DS.atrr('string'),
-  rev: DS.atrr('string')
+  username: DS.attr('string'),
+  rev: DS.attr('string')
 }
 
 `export default Settings`

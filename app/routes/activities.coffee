@@ -3,11 +3,11 @@
 ActivitiesRoute = Ember.Route.extend
 
   model: ->
-    @store.peekAll('activity-description')
+    @store.findAll('activity-description')
 
   content: Ember.computed.alias 'model'
 
   updateModel: ->
-    @set 'model', @store.peekAll('activity-description')
+    @set 'model', @store.findAll('activity-description')
 
 `export default ActivitiesRoute`

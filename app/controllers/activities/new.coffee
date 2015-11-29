@@ -12,10 +12,11 @@ ActivitiesNewController = Ember.Controller.extend
   actions:
 
     create: ->
-      @store.createRecord('activity-description', {
+      record = @store.createRecord('activity-description', {
         description: @get 'activityDescription'
         username: @get 'settingsService.username'
       })
+      record.save()
       @set 'activityDescription', ""
       @transitionTo('activities')
 

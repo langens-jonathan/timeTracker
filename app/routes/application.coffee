@@ -7,9 +7,6 @@ ApplicationRoute = Ember.Route.extend
       if(transition.targetName == "index")
         ic = @container.lookup("controller:index")
         ic.setActivityDescriptions()
-      ss = @container.lookup("service:settings")
-      ss.saveSettings()
-
 
 
 `export default ApplicationRoute`
