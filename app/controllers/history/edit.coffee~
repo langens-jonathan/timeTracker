@@ -1,5 +1,0 @@
-`import Ember from 'ember'`
-
-HistoryEditController = Ember.Controller.extend()
-
-`export default HistoryEditController`
