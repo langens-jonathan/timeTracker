@@ -58,8 +58,8 @@ module.exports = function(environment) {
 
   }
 
-  ENV.remote_couch = 'http://192.168.0.218:5984/timeTracker';
-  ENV.local_couch = 'timeTracker';
+  ENV.remote_couch = 'http://0.0.0.0:5984/timetracker';
+  ENV.local_couch = 'timetracker';
     
   return ENV;
 };
