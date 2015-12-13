@@ -19,6 +19,7 @@ HistoryRoute = Ember.Route.extend
     m = @store.findAll('activity')
     m.forEach (item, i) ->
       item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
+    m
 
   content: Ember.computed.alias 'model'
 
