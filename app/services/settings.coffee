@@ -7,7 +7,7 @@ SettingsService = Ember.Service.extend
   activeColor: 'amber'
 
   colorOptions: ['pink',
-	  'teal accent-3',
+	        'teal',
 		'red',
 		'orange',
 		'amber',

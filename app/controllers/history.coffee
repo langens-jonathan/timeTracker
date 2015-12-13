@@ -14,9 +14,9 @@ HistoryController = Ember.Controller.extend
       @transitionTo('history/new')
 
     deleteRow: (row) ->
-      ads = @store.findAll('activity')
+      ads = @store.peekAll('activity')
       ads.forEach (item, i) ->
-        if item.get('description') == row.get('description') and item.get('startTime') == row.get('startTime') and item.get('endTime') == row.get('endTime') and item.get('extraInformation') == row.get('extraInformation') and item.get('username') == row.get('username')
+        if item.get('id') == row.get('id')
           item.destroyRecord()
 
     editRow: (row) ->
