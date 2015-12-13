@@ -1,12 +1,10 @@
 `import Ember from 'ember'`
 
 SettingsService = Ember.Service.extend
-  init: ->
-    @_super(arguments...)
 
   username: 'user'
 
-  activeColor: 'deep-purple'
+  activeColor: 'red-lighten-1'
 
   colorOptions: ['pink',
 	  'teal accent-3',
@@ -25,32 +23,6 @@ SettingsService = Ember.Service.extend
 		'brown',
 		'grey',
 		'blue-grey']
-
-  getSettingsRecord: ->
-    allSettings = @store.findAll('settings')
-    settingsRecord = undefined
-    allSettings.forEach (item, i) ->
-      if item.username == @get('username')
-        settingsRecord = settingsRecord or item
-
-    unless settingsRecord
-      settingsRecord = @store.createRecord('settings', {
-        'activeColor': @get('activeColor')
-        'username': @get('username')
-      })
-      settingsRecord.save()
-
-    settingsRecord
-
-  loadActiveColor: ->
-    sr = @getSettingsRecord()
-    @set 'activeColor', sr.get('activeColor')
-
-  saveSettings: ->
-    sr = @getSettingsRecord()
-    sr.set 'activeColor', @get('activeColor')
-    sr.set 'username', @get('username')
-    sr.save()
 
 
 `export default SettingsService`
