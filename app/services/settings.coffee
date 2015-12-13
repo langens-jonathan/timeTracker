@@ -4,11 +4,10 @@ SettingsService = Ember.Service.extend
 
   username: 'user'
 
-  activeColor: 'red-lighten-1'
+  activeColor: 'amber'
 
   colorOptions: ['pink',
 	  'teal accent-3',
-		'red lighten-1',
 		'red',
 		'orange',
 		'amber',
