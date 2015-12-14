@@ -22,15 +22,27 @@
         actionArg=row
 	class=buttonClass}}
   {{/md-table-col}}
-  
+
   {{#md-table-col row=row valueBindingPath=''}}
+    {{#if row.selected}}
+     {{md-btn text='yes'
+	action='deleteRow'
+	buttonType='floating'
+	actionArg=row
+	class=buttonClass}}
+     {{md-btn text='no'
+	buttonType='floating'
+	action='selectRow'
+	class=buttonClass}}
+    {{else}}
       {{md-btn icon='mdi-action-delete'
 	buttonType='floating'
-	action='deleteRow'
+	action='selectRow'
         actionArg=row
 	class=buttonClass}}
-  {{/md-table-col}}
+    {{/if}}
   
+  {{/md-table-col}}
 {{/md-table}}
 
     <div>

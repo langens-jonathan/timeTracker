@@ -26,4 +26,11 @@ HistoryController = Ember.Controller.extend
 
       @transitionTo('history/edit')
 
+    selectRow: (row) ->
+      ads = @store.peekAll('activity')
+      ads.forEach (item,i) ->
+        item.set 'selected', false
+        if item.get('id') == row.get('id')
+          item.set 'selected', true
+
 `export default HistoryController`

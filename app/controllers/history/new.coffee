@@ -46,6 +46,7 @@ HistoryNewController = Ember.Controller.extend
     endTime
 
   startTimeObserver: ( ->
+    ###
     st = @get 'startTime'
     startTimeMinutes = (st % 4)
     st = st - startTimeMinutes
@@ -60,9 +61,11 @@ HistoryNewController = Ember.Controller.extend
     @set 'startTimeString', sts + st + ":" + stp + startTimeMinutes
     if @get('endTime') < @get('startTime')
       @set 'endTime', @get('startTime')
+    ###
   ).observes('startTime')
 
   endTimeObserver: ( ->
+    ###
     st = @get 'endTime'
     startTimeMinutes = (st % 4)
     st = st - startTimeMinutes
@@ -77,6 +80,7 @@ HistoryNewController = Ember.Controller.extend
     @set 'endTimeString', sts + st + ":" + stp + startTimeMinutes
     if @get('endTime') < @get('startTime')
       @set('endTime', @get('startTime'))
+    ###
   ).observes('endTime')
 
   extraInformation: ""

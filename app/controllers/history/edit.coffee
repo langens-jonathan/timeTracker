@@ -8,6 +8,8 @@ HistoryEditController = Ember.Controller.extend
 
   originalEndTime: undefined
 
+  id: undefined
+
   originalUser: ""
 
   originalExtraInformation: ""
@@ -30,7 +32,8 @@ HistoryEditController = Ember.Controller.extend
     @set 'activityDescription', row.get('description')
     @set 'startTime', row.get('startTime')
     @set 'endTime', row.get('endTime')
-    @set 'extraInformation', row.get('extraInformation')
+    @set 'extraInformation', row.get('extraInfo')
+    @set 'id', row.get('id')
 
   actions:
     updateActivity: ->
@@ -38,9 +41,10 @@ HistoryEditController = Ember.Controller.extend
       ads.forEach (item, i) =>
         unless item
           return
-        if item.get('description') == @get('originalActivityDescription') and item.get('startTime') == @get('originalStartTime') and item.get('endTime') == @get('originalEndTime') and item.get('extraInfo') == @get('originalExtraInformation') and item.get('username') == @get('originalUser')
+        if item.get('id') == @get('id')
           item.set 'description', @get('activityDescription')
-          item.set 'extraInfo', @get 'extraInformation'
+          item.set 'extraInfo', @get('extraInformation')
+          item.save()
       
       @transitionTo('history')
 
