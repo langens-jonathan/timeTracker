@@ -2,8 +2,9 @@
 
 HistoryRoute = Ember.Route.extend
 
-  model: ->
-    
+  settingsService: Ember.inject.service('settings')
+
+  model: ->    
     timeSpentString = (start, end) ->
       timeChanged = end - start
       timeChangedInHours = timeChanged - (timeChanged % 3600000)
@@ -16,9 +17,15 @@ HistoryRoute = Ember.Route.extend
       seconds = timeChanged / 1000
       hours + " hours " + minutes + "  minutes " + seconds + " seconds"
     
-    m = @store.findAll('activity')
-    m.forEach (item, i) ->
-      item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
+    m = @store.findAll('activity').then( (records) =>
+      ss = @get('settingsService')
+      model = Ember.A()
+      records.forEach (item, i) ->
+        item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
+        if Ember.get(item, 'username') == ss.get('username')
+          model.push item
+      model
+      )
     m
 
   content: Ember.computed.alias 'model'

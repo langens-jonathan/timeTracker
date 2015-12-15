@@ -8,11 +8,14 @@ IndexController = Ember.Controller.extend
 
   setActivityDescriptions: ->
     # setting the activity descriptions
-    ad = @store.peekAll('activity-description')
-    ads = []
-    ad.forEach (item,i) ->
-      ads.push(item.get('description'))
-    @set('activityDescriptions', ads)
+    ad = @store.findAll('activity-description').then( (records) =>
+      ads = []
+      ss = @get('settingsService')
+      records.forEach (item,i) ->
+        if Ember.get(item, 'username') == ss.get('username')
+          ads.push(item.get('description'))
+      @set('activityDescriptions', ads)
+    )
 
   settingsService: Ember.inject.service('settings')
 
