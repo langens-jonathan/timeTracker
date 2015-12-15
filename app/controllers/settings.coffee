@@ -14,5 +14,9 @@ SettingsController = Ember.Controller.extend
 
   username: Ember.computed.alias('settingsService.username')
 
+  actions:
+    saveInfo: ->
+      document.cookie = @get('username') + "|" + @get('activeColor')
+
 
 `export default SettingsController`
