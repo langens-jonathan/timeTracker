@@ -11,7 +11,7 @@ SettingsService = Ember.Service.extend
 		'red',
 		'orange',
 		'amber',
-		'yellow-accent-2',
+		'yellow',
 		'light-green',
 		'green',
 		'cyan',
