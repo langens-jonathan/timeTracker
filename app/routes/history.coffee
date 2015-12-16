@@ -4,6 +4,8 @@ HistoryRoute = Ember.Route.extend
 
   settingsService: Ember.inject.service('settings')
 
+  months: ["January", "February", "March","April", "May", "June", "July","August", "September","October","November", "December"]
+
   model: ->    
     timeSpentString = (start, end) ->
       timeChanged = end - start
@@ -20,8 +22,13 @@ HistoryRoute = Ember.Route.extend
     m = @store.findAll('activity').then( (records) =>
       ss = @get('settingsService')
       model = Ember.A()
-      records.forEach (item, i) ->
+      records.forEach (item, i) =>
         item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
+        st = item.get('startTime')
+        day = st.getDate()
+        month = (@get('months'))[st.getMonth()]
+        year = st.getFullYear()
+        item.set 'startTime', (day + ' ' + month + ' ' + year)
         if Ember.get(item, 'username') == ss.get('username')
           model.push item
       model
