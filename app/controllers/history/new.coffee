@@ -95,6 +95,11 @@ HistoryNewController = Ember.Controller.extend
         extraInfo: @get 'extraInformation'
       })
       record.save()
+      @set 'startTime', 0
+      @set 'endTime', 0
+      @set 'activityDescription', ''
+      @set 'extraInformation', ''
+      @set 'dateValue', new Date()
       @transitionTo('history')
 
 `export default HistoryNewController`
