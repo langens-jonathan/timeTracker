@@ -1,3 +1,20 @@
 <div style="width:85%;margin:auto;">
-{{outlet}}
+<table style="padding-top:50px;">
+<tr>
+{{#each spreadsheets as |spreadsheet|}}
+<td>    <a href={{spreadsheet.link}} style="margin:auto;">
+    <img src="spreadsheet.png" />
+    </a>
+</td>
+{{/each}}
+</tr><tr>
+{{#each spreadsheets as |spreadsheet|}}
+<td>
+    <a href={{spreadsheet.link}} style="margin:auto;">
+       {{spreadsheet.name}}
+    </a>
+</td>
+{{/each}}
+</tr>
+</table>
 </div>
