@@ -61,5 +61,13 @@ module.exports = function(environment) {
   ENV.remote_couch = 'http://0.0.0.0:5984/timetracker';
   ENV.local_couch = 'timetracker';
     
+  ENV.manifest = {
+  enabled: true,
+  appcacheFile: "/manifest.appcache",
+  excludePaths: ['index.html', 'someother.html'],
+  includePaths: ['/'],
+  network: ['api/'],
+  showCreateDate: true
+  }  
   return ENV;
 };
