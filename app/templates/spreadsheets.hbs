@@ -2,7 +2,7 @@
 <table style="padding-top:50px;">
 <tr>
 {{#each model as |spreadsheet|}}
-<td>    <a href={{spreadsheet.filename}} style="margin:auto;">
+<td>    <a href={{spreadsheet.link}} style="margin:auto;">
     <img src="spreadsheet.png" />
     </a>
 </td>
@@ -10,7 +10,7 @@
 </tr><tr>
 {{#each model as |spreadsheet|}}
 <td>
-    <a href={{spreadsheet.filename}} style="margin:auto;">
+    <a href={{spreadsheet.link}} style="margin:auto;">
        {{spreadsheet.filename}}
     </a>
 </td>

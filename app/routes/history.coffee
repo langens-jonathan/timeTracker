@@ -1,5 +1,4 @@
 `import Ember from 'ember'`
-
 HistoryRoute = Ember.Route.extend
 
   settingsService: Ember.inject.service('settings')
@@ -25,10 +24,13 @@ HistoryRoute = Ember.Route.extend
       records.forEach (item, i) =>
         item.set 'timeSpent', timeSpentString(item.get('startTime'), item.get('endTime'))
         st = item.get('startTime')
-        day = st.getDate()
-        month = (@get('months'))[st.getMonth()]
-        year = st.getFullYear()
-        item.set 'startTime', (day + ' ' + month + ' ' + year)
+        try
+          day = st.getDate()
+          month = (@get('months'))[st.getMonth()]
+          year = st.getFullYear()
+          item.set 'startTime', (day + ' ' + month + ' ' + year)
+        catch error
+          Ember.Logger.log error
         if Ember.get(item, 'username') == ss.get('username')
           model.push item
       model
